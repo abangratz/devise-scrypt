@@ -20,19 +20,19 @@ describe Devise::Encryptable::Encryptors::Scrypt do
     let(:encrypted) { SCrypt::Password.create("#{password}#{salt}#{pepper}").to_s }
 
     it "is true when comparing an encrypted password against given plaintext" do
-      expect(scrypt.compare(encrypted, password, stretches, salt, pepper)).to be_true
+      expect(scrypt.compare(encrypted, password, stretches, salt, pepper)).to be_truthy
     end
 
     it "is false when comparing with wrong password" do
-      expect(scrypt.compare(encrypted, 'foobar', stretches, salt, pepper)).to be_false
+      expect(scrypt.compare(encrypted, 'foobar', stretches, salt, pepper)).to be_falsey
     end
 
     it "is false when comparing with correct password but wrong salt" do
-      expect(scrypt.compare(encrypted, password, stretches, 'nope', pepper)).to be_false
+      expect(scrypt.compare(encrypted, password, stretches, 'nope', pepper)).to be_falsey
     end
 
     it "is false when comparing with correct password but wrong pepper" do
-      expect(scrypt.compare(encrypted, password, stretches, salt, 'nope')).to be_false
+      expect(scrypt.compare(encrypted, password, stretches, salt, 'nope')).to be_falsey
     end
   end
 

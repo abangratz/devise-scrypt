@@ -20,4 +20,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'devise', '>= 2.1.0'
   gem.add_dependency 'devise-encryptable', '>= 0.1.1'
   gem.add_dependency 'scrypt', '>= 1.1.0'
+  gem.add_development_dependency 'actionpack', '>= 4.2.5'
+  gem.add_development_dependency 'activemodel', '>= 4.2.5'
 end
